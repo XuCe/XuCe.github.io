@@ -1,0 +1,8 @@
+.top-nav-collapse {
+  background-color: #fff;
+}
+
+.top-nav-collapse .container .navbar-brand,
+.top-nav-collapse .navbar-collapse .nav-item .nav-link {
+  color: #2f4154;
+}

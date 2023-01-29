@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  
+  
+  
+  <entry>
+    <title>Gradle强制刷新单模块依赖与依赖查看</title>
+    <link href="/2023/01/29/Gradle%E5%BC%BA%E5%88%B6%E5%88%B7%E6%96%B0%E5%8D%95%E6%A8%A1%E5%9D%97%E4%BE%9D%E8%B5%96%E4%B8%8E%E4%BE%9D%E8%B5%96%E6%9F%A5%E7%9C%8B/"/>
+    <url>/2023/01/29/Gradle%E5%BC%BA%E5%88%B6%E5%88%B7%E6%96%B0%E5%8D%95%E6%A8%A1%E5%9D%97%E4%BE%9D%E8%B5%96%E4%B8%8E%E4%BE%9D%E8%B5%96%E6%9F%A5%E7%9C%8B/</url>
+    
+    <content type="html"><![CDATA[<h2 id="Gradle-刷新模块"><a href="#Gradle-刷新模块" class="headerlink" title="Gradle 刷新模块"></a>Gradle 刷新模块</h2><p>Gradle 申明依赖时，对于正在开发测试中的模块，有多种方式动态依赖最新版本。同时为了保证构建效率，gradle 默认 24 小时才会检查动态版本是否发生变化。本文将说明如何申明&#x2F;刷新动态依赖。</p><h3 id="1-依赖申明"><a href="#1-依赖申明" class="headerlink" title="1.依赖申明"></a>1.依赖申明</h3><p>申明动态依赖(Dynamic dependencies)：</p><figure class="highlight clean"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs clean">dependencies &#123;<br>    <span class="hljs-keyword">implementation</span> <span class="hljs-string">&#x27;com.example:library:1.+&#x27;</span><br>&#125;<br></code></pre></td></tr></table></figure><p>申明变更中版本(Changing version)：</p><figure class="highlight clean"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs clean">dependencies &#123;<br>    <span class="hljs-keyword">implementation</span> <span class="hljs-string">&#x27;org.example:library:1.0.0-SNAPSHOT&#x27;</span><br>&#125;<br></code></pre></td></tr></table></figure><h3 id="2-更新依赖"><a href="#2-更新依赖" class="headerlink" title="2.更新依赖"></a>2.更新依赖</h3><p>调整默认更新时间<br>对于动态依赖和变更中版本，默认更新时间为 24 小时，可以通过以下配置调整更新时间。</p><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs stylus">configurations<span class="hljs-selector-class">.all</span> &#123;<br>    resolutionStrategy<span class="hljs-selector-class">.cacheDynamicVersionsFor</span> <span class="hljs-number">10</span>, <span class="hljs-string">&#x27;minutes&#x27;</span><br>    <span class="hljs-comment">// resolutionStrategy.cacheChangingModulesFor 4, &#x27;hours&#x27;</span><br>    resolutionStrategy<span class="hljs-selector-class">.cacheChangingModulesFor</span> <span class="hljs-number">0</span>, <span class="hljs-string">&#x27;seconds&#x27;</span><br>&#125;<br></code></pre></td></tr></table></figure><p>通过命令行刷新</p><p><code>--refresh-dependencies</code> 参数会让 gradle 忽略所有模块缓存信息，重新计算动态版本，比较 SHA1 值确定是否下载新的模块。此参数严重影响构建速度。</p><h3 id="3-刷新单模块"><a href="#3-刷新单模块" class="headerlink" title="3.刷新单模块"></a>3.刷新单模块</h3><p>对于单个模块，发布之后出现新的修改，此时还没有外部使用，于是使用相同版本号。按照之前的说明，需要使用 <code>--refresh-dependencies</code>，构建速度非常慢，通过以下修改能像 <code>SNAPSHOT</code> 版本刷新。</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs javascript">dependencies &#123;<br>    <span class="hljs-title function_">implementation</span>(<span class="hljs-params"><span class="hljs-string">&#x27;org.example:library:1.0.0&#x27;</span></span>)&#123;<br>        changing = <span class="hljs-literal">true</span><br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure><p>是的，如你所想，就是将模块申明成了变更中版本</p><h2 id="Gradle-依赖查看"><a href="#Gradle-依赖查看" class="headerlink" title="Gradle 依赖查看"></a>Gradle 依赖查看</h2><h3 id="查看所有依赖"><a href="#查看所有依赖" class="headerlink" title="查看所有依赖"></a>查看所有依赖</h3><figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs elixir">./gradlew <span class="hljs-symbol">:module</span><span class="hljs-symbol">:dependencies</span> --configuration debugCompileClasspath<br></code></pre></td></tr></table></figure><h3 id="查看指定库依赖"><a href="#查看指定库依赖" class="headerlink" title="查看指定库依赖"></a>查看指定库依赖</h3><figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs jboss-cli"><span class="hljs-string">./gradlew</span> <span class="hljs-function">:module</span><span class="hljs-function">:dependencyInsight</span> <span class="hljs-params">--dependency</span> &lt;xxxx&gt; <span class="hljs-params">--configuration</span> debugCompileClasspath<br></code></pre></td></tr></table></figure><p>More info: <a href="https://docs.gradle.org/current/userguide/dependency_management.html#sec:dynamic_versions_and_changing_modules">Document</a></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>后端开发</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Gradle</tag>
+      
+      <tag>刷新依赖</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  
+</search>
