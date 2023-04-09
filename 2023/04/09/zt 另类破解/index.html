@@ -16,23 +16,22 @@
   <meta name="author" content="青眸">
   <meta name="keywords" content="">
   
-    <meta name="description" content="使用命令进行磁盘扩容1234lvextend -L 10G &#x2F;dev&#x2F;mapper&#x2F;ubuntu--vg-ubuntu--lv      &#x2F;&#x2F;增大或减小至19Glvextend -L +10G &#x2F;dev&#x2F;mapper&#x2F;ubuntu--vg-ubuntu--lv     &#x2F;&#x2F;增加10Glvreduce -L -10G &#x2F;dev&#x2F;mapper&#x2F;ubuntu--vg-ubuntu--lv     &#x2F;&#x2F;减">
+    <meta name="description" content="步骤一数据库复制 user 表 名称为 user_original 步骤二zentaopms 文件修改 1define(&amp;#x27;TABLE_USER&amp;#x27;,          &amp;#x27;&#96;&amp;#x27; . $config-&gt;db-&gt;prefix . &amp;#x27;user&#96;&amp;#x27;);  为 12define(&amp;#x27;TABLE_USER&amp;#x27;,">
 <meta property="og:type" content="article">
-<meta property="og:title" content="如何扩大ubuntu的ubuntu--vg-ubuntu--lv空间">
-<meta property="og:url" content="https://xuce.github.io/2023/02/20/%E5%A6%82%E4%BD%95%E6%89%A9%E5%A4%A7ubuntu%E7%9A%84ubuntu--vg-ubuntu--lv%E7%A9%BA%E9%97%B4/index.html">
+<meta property="og:title" content="zt 另类破解">
+<meta property="og:url" content="https://xuce.github.io/2023/04/09/zt%20%E5%8F%A6%E7%B1%BB%E7%A0%B4%E8%A7%A3/index.html">
 <meta property="og:site_name" content="青眸淡写 —— 随手笔记">
-<meta property="og:description" content="使用命令进行磁盘扩容1234lvextend -L 10G &#x2F;dev&#x2F;mapper&#x2F;ubuntu--vg-ubuntu--lv      &#x2F;&#x2F;增大或减小至19Glvextend -L +10G &#x2F;dev&#x2F;mapper&#x2F;ubuntu--vg-ubuntu--lv     &#x2F;&#x2F;增加10Glvreduce -L -10G &#x2F;dev&#x2F;mapper&#x2F;ubuntu--vg-ubuntu--lv     &#x2F;&#x2F;减">
+<meta property="og:description" content="步骤一数据库复制 user 表 名称为 user_original 步骤二zentaopms 文件修改 1define(&amp;#x27;TABLE_USER&amp;#x27;,          &amp;#x27;&#96;&amp;#x27; . $config-&gt;db-&gt;prefix . &amp;#x27;user&#96;&amp;#x27;);  为 12define(&amp;#x27;TABLE_USER&amp;#x27;,">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2023-02-19T16:37:41.198Z">
-<meta property="article:modified_time" content="2023-02-19T16:41:38.929Z">
+<meta property="article:published_time" content="2023-04-09T13:31:55.248Z">
+<meta property="article:modified_time" content="2023-04-09T13:38:15.996Z">
 <meta property="article:author" content="青眸">
-<meta property="article:tag" content="ubuntu">
-<meta property="article:tag" content="运维">
+<meta property="article:tag" content="破解">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>如何扩大ubuntu的ubuntu--vg-ubuntu--lv空间 - 青眸淡写 —— 随手笔记</title>
+  <title>zt 另类破解 - 青眸淡写 —— 随手笔记</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -202,7 +201,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="如何扩大ubuntu的ubuntu--vg-ubuntu--lv空间"></span>
+            <span id="subtitle" data-typed-text="zt 另类破解"></span>
           
         </div>
 
@@ -213,8 +212,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-02-20 00:37" pubdate>
-          2023年2月20日 凌晨
+        <time datetime="2023-04-09 21:31" pubdate>
+          2023年4月9日 晚上
         </time>
       </span>
     
@@ -225,7 +224,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          757 字
+          386 字
         
       </span>
     
@@ -236,7 +235,7 @@
         
         
         
-          7 分钟
+          4 分钟
         
       </span>
     
@@ -274,16 +273,20 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">如何扩大ubuntu的ubuntu--vg-ubuntu--lv空间</h1>
+            <h1 style="display: none">zt 另类破解</h1>
             
             
               <div class="markdown-body">
                 
-                <h3 id="使用命令进行磁盘扩容"><a href="#使用命令进行磁盘扩容" class="headerlink" title="使用命令进行磁盘扩容"></a>使用命令进行磁盘扩容</h3><figure class="highlight brainfuck"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs brainfuck"><span class="hljs-comment">lvextend</span> <span class="hljs-literal">-</span><span class="hljs-comment">L 10G /dev/mapper/ubuntu</span><span class="hljs-literal">--</span><span class="hljs-comment">vg</span><span class="hljs-literal">-</span><span class="hljs-comment">ubuntu</span><span class="hljs-literal">--</span><span class="hljs-comment">lv      //增大或减小至19G</span><br><span class="hljs-comment">lvextend</span> <span class="hljs-literal">-</span><span class="hljs-comment">L</span> <span class="hljs-literal">+</span><span class="hljs-comment">10G /dev/mapper/ubuntu</span><span class="hljs-literal">--</span><span class="hljs-comment">vg</span><span class="hljs-literal">-</span><span class="hljs-comment">ubuntu</span><span class="hljs-literal">--</span><span class="hljs-comment">lv     //增加10G</span><br><span class="hljs-comment">lvreduce</span> <span class="hljs-literal">-</span><span class="hljs-comment">L</span> <span class="hljs-literal">-</span><span class="hljs-comment">10G /dev/mapper/ubuntu</span><span class="hljs-literal">--</span><span class="hljs-comment">vg</span><span class="hljs-literal">-</span><span class="hljs-comment">ubuntu</span><span class="hljs-literal">--</span><span class="hljs-comment">lv     //减小10G</span><br><span class="hljs-comment">lvresize</span> <span class="hljs-literal">-</span><span class="hljs-comment">l</span>  <span class="hljs-literal">+</span><span class="hljs-comment">100%FREE /dev/mapper/ubuntu</span><span class="hljs-literal">--</span><span class="hljs-comment">vg</span><span class="hljs-literal">-</span><span class="hljs-comment">ubuntu</span><span class="hljs-literal">--</span><span class="hljs-comment">lv   //按百分比扩</span><br></code></pre></td></tr></table></figure>
+                <h3 id="步骤一"><a href="#步骤一" class="headerlink" title="步骤一"></a>步骤一</h3><p>数据库复制 user 表 名称为 user_original</p>
+<h3 id="步骤二"><a href="#步骤二" class="headerlink" title="步骤二"></a>步骤二</h3><p>zentaopms 文件修改</p>
+<figure class="highlight xl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs xl"><span class="hljs-function"><span class="hljs-title">define</span>(&#x27;TABLE_USER&#x27;,          &#x27;`&#x27; . $config-&gt;</span><span class="hljs-function"><span class="hljs-title">db</span>-&gt;</span><span class="hljs-keyword">prefix</span> . <span class="hljs-string">&#x27;user`&#x27;</span>);<br></code></pre></td></tr></table></figure>
 
-<h3 id="使用如下命令，将-x2F-tmp-增加-60G"><a href="#使用如下命令，将-x2F-tmp-增加-60G" class="headerlink" title="使用如下命令，将&#x2F;tmp 增加 60G"></a>使用如下命令，将&#x2F;tmp 增加 60G</h3><figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">root</span>@ubuntu:~# lvresize -L +<span class="hljs-number">60</span>G /dev/mapper/ubuntu--vg-ubuntu--lv<br>  <span class="hljs-attribute">Size</span> of logical volume ubuntu-vg/ubuntu-lv changed from <span class="hljs-number">63</span>.<span class="hljs-number">25</span> GiB (<span class="hljs-number">16192</span> extents) to <span class="hljs-number">123</span>.<span class="hljs-number">25</span> GiB (<span class="hljs-number">31552</span> extents).<br>  <span class="hljs-attribute">Logical</span> volume ubuntu-vg/ubuntu-lv successfully resized.<br></code></pre></td></tr></table></figure>
+<p>为</p>
+<figure class="highlight xl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs xl"><span class="hljs-function"><span class="hljs-title">define</span>(&#x27;TABLE_USER&#x27;,          &#x27;`&#x27; . $config-&gt;</span><span class="hljs-function"><span class="hljs-title">db</span>-&gt;</span><span class="hljs-keyword">prefix</span> . <span class="hljs-string">&#x27;user_original`&#x27;</span>);<br><span class="hljs-function"><span class="hljs-title">define</span>(&#x27;TABLE_USER1&#x27;,         &#x27;`&#x27; . $config-&gt;</span><span class="hljs-function"><span class="hljs-title">db</span>-&gt;</span><span class="hljs-keyword">prefix</span> . <span class="hljs-string">&#x27;user`&#x27;</span>);<br></code></pre></td></tr></table></figure>
 
-<h3 id="扩容"><a href="#扩容" class="headerlink" title="扩容"></a>扩容</h3><figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">root</span>@ubuntu:~# resize2fs /dev/mapper/ubuntu--vg-ubuntu--lv<br><span class="hljs-attribute">resize2fs</span> <span class="hljs-number">1</span>.<span class="hljs-number">45</span>.<span class="hljs-number">5</span> (<span class="hljs-number">07</span>-Jan-<span class="hljs-number">2020</span>)<br><span class="hljs-attribute">Filesystem</span> at /dev/mapper/ubuntu--vg-ubuntu--lv is mounted <span class="hljs-literal">on</span> /; <span class="hljs-literal">on</span>-line resizing required<br><span class="hljs-attribute">old_desc_blocks</span> = <span class="hljs-number">8</span>, new_desc_blocks = <span class="hljs-number">16</span><br><span class="hljs-attribute">The</span> filesystem <span class="hljs-literal">on</span> /dev/mapper/ubuntu--vg-ubuntu--lv is now <span class="hljs-number">32309248</span> (<span class="hljs-number">4</span>k) blocks long.<br></code></pre></td></tr></table></figure>
+<h3 id="步骤三"><a href="#步骤三" class="headerlink" title="步骤三"></a>步骤三</h3><p>替换其他所有文件中 TABLE_USER 为 TABLE_USER1</p>
+<h3 id="步骤四"><a href="#步骤四" class="headerlink" title="步骤四"></a>步骤四</h3><p>注释 user 文件中 getPairs 方法以及内容</p>
 
                 
               </div>
@@ -302,7 +305,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/%E8%BF%90%E7%BB%B4%E9%83%A8%E7%BD%B2/" class="category-chain-item">运维部署</a>
+  <a href="/categories/%E5%85%B6%E4%BB%96/" class="category-chain-item">其他</a>
   
   
 
@@ -317,9 +320,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/ubuntu/">#ubuntu</a>
-      
-        <a href="/tags/%E8%BF%90%E7%BB%B4/">#运维</a>
+        <a href="/tags/%E7%A0%B4%E8%A7%A3/">#破解</a>
       
     </div>
   
@@ -331,8 +332,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>如何扩大ubuntu的ubuntu--vg-ubuntu--lv空间</div>
-      <div>https://xuce.github.io/2023/02/20/如何扩大ubuntu的ubuntu--vg-ubuntu--lv空间/</div>
+      <div>zt 另类破解</div>
+      <div>https://xuce.github.io/2023/04/09/zt 另类破解/</div>
     </div>
     <div class="license-meta">
       
@@ -344,7 +345,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2023年2月20日</div>
+          <div>2023年4月9日</div>
         </div>
       
       
@@ -376,18 +377,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/04/09/zt%20%E5%8F%A6%E7%B1%BB%E7%A0%B4%E8%A7%A3/" title="zt 另类破解">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">zt 另类破解</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/02/20/%E4%BD%BF%E7%94%A8docker-compose%E9%83%A8%E7%BD%B2kafka/" title="使用docker-compose部署kafka">
-                        <span class="hidden-mobile">使用docker-compose部署kafka</span>
+                      <a href="/2023/02/20/%E5%A6%82%E4%BD%95%E6%89%A9%E5%A4%A7ubuntu%E7%9A%84ubuntu--vg-ubuntu--lv%E7%A9%BA%E9%97%B4/" title="如何扩大ubuntu的ubuntu--vg-ubuntu--lv空间">
+                        <span class="hidden-mobile">如何扩大ubuntu的ubuntu--vg-ubuntu--lv空间</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
